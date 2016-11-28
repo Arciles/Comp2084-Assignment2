@@ -15,14 +15,14 @@ namespace Comp2084_Assignment2.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "This application designed to keep track of your auction items. Calculate your profit from auctioned items and more.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "For further questions plase contact Esat IBIS.";
 
             return View();
         }
