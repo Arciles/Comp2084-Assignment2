@@ -26,3 +26,7 @@ textarea {
 .jumbotron {
     margin-top: 60px;
 }
+
+#navigation {
+    font-weight: 400;
+}
