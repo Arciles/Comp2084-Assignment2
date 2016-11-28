@@ -21,7 +21,7 @@ namespace Comp2084_Assignment2.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("AzureDatabase", throwIfV1Schema: false)
         {
         }
 

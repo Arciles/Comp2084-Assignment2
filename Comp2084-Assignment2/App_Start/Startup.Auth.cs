@@ -58,11 +58,11 @@ namespace Comp2084_Assignment2
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1016968932116-5957kde45m6e2hjr2hl919d44uv6e712.apps.googleusercontent.com",
+                ClientSecret = "2CwYl54-mt-x7QKUPhxkZYgP"
+            });
         }
     }
 }
