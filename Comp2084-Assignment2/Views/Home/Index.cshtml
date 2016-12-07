@@ -3,10 +3,7 @@
 }
 @if (Request.IsAuthenticated)
 {
-    <div class="jumbotron">
-        <h1>Under Construction</h1>
-        <p class="lead">This part of the website is still under-construction plase wait for further updates. </p>
-    </div>
+    Response.Redirect("~/AuctionItems/index");
 }
 else
 {

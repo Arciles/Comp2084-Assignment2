@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Comp2084_Assignment2.Models.AuctionItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <h2>Your Auction Items</h2>
+
+    <p>
+        @Html.ActionLink("Create New Auction Item", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price_expected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price_sold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.profit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.time_created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.time_sold)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pic)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price_expected)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price_sold)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.profit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.time_created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.time_sold)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pic)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.item_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.item_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.item_id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
