@@ -239,6 +239,7 @@
     <Content Include="fonts\Lato-LightItalic.ttf" />
     <Content Include="fonts\Lato-Regular.ttf" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Images\default-placeholder.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

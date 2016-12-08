@@ -12,75 +12,47 @@
     <p>
         @Html.ActionLink("Create New Auction Item", "Create")
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AspNetUser.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.price_expected)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.price_sold)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.profit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.time_created)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.time_sold)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.pic)
-            </th>
-            <th></th>
-        </tr>
+    @foreach (var item in Model)
+    {
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.price_expected)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.price_sold)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.profit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.time_created)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.time_sold)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.pic)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.item_id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.item_id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.item_id })
-                </td>
-            </tr>
-        }
-
-    </table>
+        <div class="panel panel-info">
+            <div class="panel-body">
+                <div class="col-md-3 col-lg-3" align="center">
+                    <img alt="Character Pic" src="@Url.Content(item.pic)" class="img-responsive">
+                </div>
+                <div class="col-md-9 col-lg-9">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.title)</td>
+                                <td>@Html.DisplayFor(modelItem => item.title)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.description)</td>
+                                <td>@Html.DisplayFor(modelItem => item.description)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.price_expected)</td>
+                                <td>@Html.DisplayFor(modelItem => item.price_expected)</td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.time_created)</td>
+                                <td>@Html.DisplayFor(modelItem => item.time_created)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.profit)</td>
+                                <td>@Html.DisplayFor(modelItem => item.profit)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+                @Html.ActionLink("Edit", "Edit", new { id = item.item_id }, new { @class = "btn btn-warning"}) |
+                @Html.ActionLink("Details", "Details", new { id = item.item_id }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.item_id }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    }
 </div>

@@ -7,17 +7,30 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Comp2084_Assignment2.Models;
+using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace Comp2084_Assignment2.Controllers
 {
+    [Authorize]
     public class AuctionItemsController : Controller
     {
         private AzureDatabase db = new AzureDatabase();
-
+        private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        private static long ConvertToTimestamp(DateTime value)
+        {
+            TimeSpan elapsedTime = value - Epoch;
+            return (long)elapsedTime.TotalSeconds;
+        }
         // GET: AuctionItems
         public ActionResult Index()
         {
-            var auctionItems = db.AuctionItems.Include(a => a.AspNetUser);
+            //var auctionItems = db.AuctionItems.Include(a => a.AspNetUser);
+            var user_id = User.Identity.GetUserId();
+            var auctionItems = from data in db.AuctionItems
+                               where user_id == data.user_id
+                               select data;
+
             return View(auctionItems.ToList());
         }
 
@@ -48,10 +61,25 @@ namespace Comp2084_Assignment2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "item_id,user_id,title,description,price_expected,price_sold,profit,time_created,time_sold,pic")] AuctionItem auctionItem)
+        public ActionResult Create([Bind(Include = "title,description,price_expected,price_sold,profit,time_sold")] AuctionItem auctionItem, HttpPostedFileBase itemPic)
         {
             if (ModelState.IsValid)
             {
+                auctionItem.user_id = User.Identity.GetUserId();
+                auctionItem.time_created = DateTime.Now;
+
+                if (itemPic != null && itemPic.ContentLength > 0)
+                {
+                    // Create the image url to be saved to the database
+                    auctionItem.pic = Path.Combine("~/Images", ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(itemPic.FileName));
+                    itemPic.SaveAs(Path.Combine(Server.MapPath("~/Images"), ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(itemPic.FileName)));
+
+                } else
+                {
+                    // TODO : put some generic file pic
+                    auctionItem.pic = "~/Images/default-placeholder.png";
+                }
+
                 db.AuctionItems.Add(auctionItem);
                 db.SaveChanges();
                 return RedirectToAction("Index");

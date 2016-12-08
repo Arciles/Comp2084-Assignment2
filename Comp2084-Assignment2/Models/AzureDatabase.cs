@@ -8,7 +8,7 @@ namespace Comp2084_Assignment2.Models
     public partial class AzureDatabase : DbContext
     {
         public AzureDatabase()
-            : base("name=AzureDatabase1")
+            : base("name=AzureDatabase")
         {
         }
 
