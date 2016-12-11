@@ -43,6 +43,7 @@ namespace Comp2084_Assignment2.Models
         public DateTime? time_sold { get; set; }
 
         [Column(TypeName = "text")]
+        [Display(Name = "Picture")]
         public string pic { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
