@@ -12,15 +12,15 @@ namespace Comp2084_Assignment2.Models
         public int item_id { get; set; }
 
         [StringLength(128)]
-        public string user_id { get; set; }
+        public String user_id { get; set; }
 
         [StringLength(50)]
         [Display(Name = "Item Title")]
-        public string title { get; set; }
+        public String title { get; set; }
 
         [Column(TypeName = "text")]
         [Display(Name = "Description")]
-        public string description { get; set; }
+        public String description { get; set; }
 
         [Display(Name = "Expected Price")]
         [DisplayFormat(DataFormatString = "{0:C}")]
@@ -35,16 +35,16 @@ namespace Comp2084_Assignment2.Models
         public decimal? profit { get; set; }
 
         [Display(Name = "Created At")]
-        [DisplayFormat(DataFormatString = "{0:f}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public DateTime? time_created { get; set; }
 
         [Display(Name = "Sold At")]
-        [DisplayFormat(DataFormatString = "{0:f}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public DateTime? time_sold { get; set; }
 
         [Column(TypeName = "text")]
         [Display(Name = "Picture")]
-        public string pic { get; set; }
+        public String pic { get; set; }
 
         public virtual AspNetUser AspNetUser { get; set; }
     }

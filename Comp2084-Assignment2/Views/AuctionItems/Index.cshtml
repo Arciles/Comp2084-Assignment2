@@ -38,7 +38,7 @@
                             <tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.time_created)</td>
-                                <td>@Html.DisplayFor(modelItem => item.time_created)</td>
+                                <td>@item.time_created.Value.ToString("f")</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.profit)</td>

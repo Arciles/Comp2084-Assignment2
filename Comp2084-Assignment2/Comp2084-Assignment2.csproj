@@ -191,7 +191,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\1481202605-images.jpg" />
+    <Content Include="Content\Images\1481202950-Koala.jpg" />
+    <Content Include="Content\Images\1481487778-stock-photo-71823413.jpg" />
     <Content Include="Content\Images\banner.jpg" />
+    <Content Include="Content\Images\default-placeholder.png" />
     <Content Include="Content\Images\pic01.jpg" />
     <Content Include="Content\Images\pic02.jpg" />
     <Content Include="Content\Images\pic03.jpg" />
@@ -239,7 +243,6 @@
     <Content Include="fonts\Lato-LightItalic.ttf" />
     <Content Include="fonts\Lato-Regular.ttf" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Images\default-placeholder.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

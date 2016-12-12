@@ -71,13 +71,13 @@ namespace Comp2084_Assignment2.Controllers
                 if (itemPic != null && itemPic.ContentLength > 0)
                 {
                     // Create the image url to be saved to the database
-                    auctionItem.pic = Path.Combine("~/Images", ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(itemPic.FileName));
-                    itemPic.SaveAs(Path.Combine(Server.MapPath("~/Images"), ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(itemPic.FileName)));
+                    auctionItem.pic = Path.Combine("~/Content/Images", ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(itemPic.FileName));
+                    itemPic.SaveAs(Path.Combine(Server.MapPath("~/Content/Images"), ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(itemPic.FileName)));
 
                 } else
                 {
                     // TODO : put some generic file pic
-                    auctionItem.pic = "~/Images/default-placeholder.png";
+                    auctionItem.pic = "~/Content/Images/default-placeholder.png";
                 }
 
                 db.AuctionItems.Add(auctionItem);
@@ -110,23 +110,18 @@ namespace Comp2084_Assignment2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "item_id,title,description,price_expected,price_sold,profit,time_created,time_sold,pic")] AuctionItem auctionItem, HttpPostedFileBase itemPic)
+        public ActionResult Edit([Bind(Include = "item_id,title,description,price_expected,price_sold,profit,time_created,time_sold,pic")] AuctionItem auctionItem, HttpPostedFileBase pic)
         {
             if (ModelState.IsValid)
             {
                 auctionItem.user_id = User.Identity.GetUserId();
 
-                if (itemPic != null && itemPic.ContentLength > 0)
+                if (pic != null && pic.ContentLength > 0)
                 {
                     // Create the image url to be saved to the database
-                    auctionItem.pic = Path.Combine("~/Images", ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(itemPic.FileName));
-                    itemPic.SaveAs(Path.Combine(Server.MapPath("~/Images"), ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(itemPic.FileName)));
+                    auctionItem.pic = Path.Combine("~/Content/Images", ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(pic.FileName));
+                    pic.SaveAs(Path.Combine(Server.MapPath("~/Content/Images"), ConvertToTimestamp(DateTime.Now).ToString() + "-" + Path.GetFileName(pic.FileName)));
 
-                }
-                else
-                {
-                    // TODO : put some generic file pic
-                    auctionItem.pic = "~/Images/default-placeholder.png";
                 }
 
                 db.Entry(auctionItem).State = EntityState.Modified;
