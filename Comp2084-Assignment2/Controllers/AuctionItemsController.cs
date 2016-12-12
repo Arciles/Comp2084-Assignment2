@@ -153,8 +153,14 @@ namespace Comp2084_Assignment2.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             AuctionItem auctionItem = db.AuctionItems.Find(id);
+            String partialPathToWhiteHouse = auctionItem.pic;
             db.AuctionItems.Remove(auctionItem);
             db.SaveChanges();
+            String pathToWhiteHouse = Request.MapPath(partialPathToWhiteHouse);
+            if (System.IO.File.Exists(pathToWhiteHouse))
+            {
+                System.IO.File.Delete(pathToWhiteHouse);
+            }
             return RedirectToAction("Index");
         }
 

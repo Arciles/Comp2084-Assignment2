@@ -8,10 +8,25 @@
 
 <div class="container">
     <h2>Your Auction Items</h2>
-
-    <p>
-        @Html.ActionLink("Create New Auction Item", "Create")
-    </p>
+    <div class="row">
+        <div class="col-md-3">
+            <p>
+                @Html.ActionLink("Create New Auction Item", "Create")
+            </p>
+        </div>
+        <div class="col-md-3 col-md-offset-6">
+            @{
+                decimal total = 0;
+                foreach (var item in Model)
+                {
+                    total += (decimal) item.profit;
+                }
+                <div class="pull-right">
+                    <p>Your total profit : @total.ToString("c")</p>
+                </div>
+            }
+        </div>
+    </div>
     @foreach (var item in Model)
     {
 
